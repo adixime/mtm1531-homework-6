@@ -52,5 +52,7 @@ if(empty($results)) {
 	<h1><?php echo $results['movie_title']; ?></h1>
     <p>Director: <?php echo $results['director']; ?></p>
 	<p>Release Date: <?php echo $results['release_date']; ?></p>
+	<a href="index.php">Home</a>
+    
 </body>
 </html>
