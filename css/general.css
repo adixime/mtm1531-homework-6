@@ -11,6 +11,26 @@ body {
 	
 	border: solid 3px #069;
 	background-color:#9C6;
-	
-	
+	width: 400px;
+	padding 1em;
+}
+
+a,
+a:link,
+a:visited {
+	display: block;
+	margin: 0;
+	padding: 0.75em 30px;
+	zoom: 1;
+
+	color: #96C;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+	background-color: #963;
+	color: #FFF;
 }
