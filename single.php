@@ -44,12 +44,13 @@ if(empty($results)) {
 <head>
     <meta charset="utf-8">
     <title>Movie Database</title>
+	<link href="css/general.css" rel="stylesheet">
 </head>
 
 <body>
 
 	<h1><?php echo $results['movie_title']; ?></h1>
     <p>Director: <?php echo $results['director']; ?></p>
-	<p>Director: <?php echo $results['release_date']; ?></p>
+	<p>Release Date: <?php echo $results['release_date']; ?></p>
 </body>
 </html>

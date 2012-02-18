@@ -39,7 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Add a Dinosaur</title>
+	<title>Add a Movie</title>
+	<link href="css/general.css" rel="stylesheet">
 </head>
 
 <body>
