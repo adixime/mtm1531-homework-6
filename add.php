@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
             <input id="movie_title" name="movie_title" value="<?php echo $movie_title; ?>" required>
         </div>
         <div>
-        	<label for="director">director<?php if (isset($errors['director'])) : ?> <strong>is required</strong><?php endif; ?></label>
+        	<label for="director">Director<?php if (isset($errors['director'])) : ?> <strong>is required</strong><?php endif; ?></label>
             <input id="director" name="director" value="<?php echo $director; ?>" required>
         </div>
 		<div>
