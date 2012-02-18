@@ -18,6 +18,7 @@ $results = $db->query(' SELECT id, movie_title, release_date, director
 <head>
 	<meta charset="utf-8">
 	<title>Movie Database</title>
+	<link href="css/general.css" rel="stylesheet">
 </head>
 
 <body>

@@ -12,6 +12,8 @@ if (empty($id)) {
 
 $movie_title = filter_input(INPUT_POST, 'movie_title', FILTER_SANITIZE_STRING);
 $director = filter_input(INPUT_POST, 'director', FILTER_SANITIZE_STRING);
+$release_date = filter_input(INPUT_POST, 'release_date', FILTER_SANITIZE_STRING);
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	if(empty($movie_title)) {
@@ -20,16 +22,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	if (empty($director)) {
 		$errors['director'] = true;
 	}
+	if (empty($release_date)) {
+		$errors['release_date'] = true;
+	}
 	if (empty($errors)) {
 		require_once 'includes/db.php';
 		
 		$sql = $db->prepare('
 			UPDATE movie_database
-			SET movie_title = :movie_title, director = :director
+			SET movie_title = :movie_title, director = :director, release_date = :release_date
 			WHERE id = :id
 		');
 		$sql->bindValue(':movie_title', $movie_title, PDO::PARAM_STR);
 		$sql->bindValue(':director', $director, PDO::PARAM_STR);
+		$sql->bindValue(':release_date', $release_date, PDO::PARAM_STR);
 		$sql->bindValue(':id', $id, PDO::PARAM_STR);
 		$sql->execute();
 		
@@ -40,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	require_once 'includes/db.php';
 	
 	$sql = $db->prepare('
-		SELECT id, movie_title, director
+		SELECT id, movie_title, director, release_date
 		FROM movie_database
 		WHERE id = :id
 	');
@@ -50,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	
 	$movie_title = $results['movie_title'];
 	$director = $results['director'];
+	$release_date = $results['release_date'];
 }
 
 ?><!DOCTYPE HTML>
@@ -69,6 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' ) {
         <div>
         	<label for="director">director<?php if (isset($errors['director'])) : ?> <strong>is required</strong><?php endif; ?></label>
             <input id="director" name="director" value="<?php echo $director; ?>" required>
+        </div>
+		<div>
+        	<label for="release_date">Release Date<?php if (isset($errors['release_date'])) : ?> <strong>is required</strong><?php endif; ?></label>
+            <input id="release_date" name="release_date" value="<?php echo $release_date; ?>" required>
         </div>
         <button type="submit">Update</button>
     </form>
